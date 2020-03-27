@@ -17,4 +17,6 @@
     <string name="permission_required_toast">permission required toast</string>
     <string name="permission_rationale_location">permission rationale location</string>
     <string name="location_permission_denied">location permission denied</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
