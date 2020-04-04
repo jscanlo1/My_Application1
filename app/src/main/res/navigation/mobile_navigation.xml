@@ -9,7 +9,25 @@
         android:id="@+id/navigation_home"
         android:name="com.example.myapplication.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_plant_list_fragment_to_plant_detail_fragment"
+            app:destination="@id/test_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+<!--
+    <fragment
+        android:id="@+id/item_detail_fragment"
+        android:name="com.example.myapplication.ui.home.ItemDetailsFragment"
+        android:label="@string/item_details_title">
+        <argument
+            android:name="plantId"
+            app:argType="string" />
+    </fragment>-->
 
     <fragment
         android:id="@+id/navigation_map"
@@ -27,4 +45,14 @@
         android:name="com.example.myapplication.ui.account.AccountFragment"
         android:label="@string/title_account"
         tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/test_fragment"
+        android:name="com.example.myapplication.ui.home.TestFragment"
+        android:label="@string/item_details_title">
+        <argument
+            android:name="plantId"
+            app:argType="string" />
+
+    </fragment>
 </navigation>
