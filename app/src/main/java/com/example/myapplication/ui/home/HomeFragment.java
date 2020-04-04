@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,9 +39,26 @@ public class HomeFragment extends Fragment {
 
     //private List<DummyContent> plantsList = new ArrayList<>();
     //private HomeViewModel homeViewModel;
+    /*
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        FragmentManager fx = getActivity().getSupportFragmentManager();
+        for(int i = 0; i < fx.getBackStackEntryCount(); ++i) {
+            fx.popBackStack();
+
+
+    }*/
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
+        FragmentManager fx = getActivity().getSupportFragmentManager();
+        for(int i = 0; i < fx.getBackStackEntryCount(); ++i) {
+            fx.popBackStack();
+        }
 
 
         //int x = 1000147;
@@ -62,6 +80,19 @@ public class HomeFragment extends Fragment {
         // 4. set adapter
         recyclerView.setAdapter(mAdapter);
 
+        setHasOptionsMenu(true);
         return rootView;
+    }
+
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.home_list, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

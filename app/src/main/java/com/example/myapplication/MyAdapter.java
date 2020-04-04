@@ -73,6 +73,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             AppCompatActivity activity = (AppCompatActivity) view.getContext();
             //TestFragment fragment = new TestFragment();
             activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
+            //activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
 
             //R.id.nav_host_fragment
         }

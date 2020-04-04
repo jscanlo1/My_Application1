@@ -1,9 +1,16 @@
 package com.example.myapplication.ui.home.dummy;
 
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -38,7 +45,7 @@ public class DummyContent {
     }
 
     private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
+        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position), "https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg");
     }
 
     private static String makeDetails(int position) {
@@ -57,16 +64,25 @@ public class DummyContent {
         public final String id;
         public final String content;
         public final String details;
+        public final String imageUrl;
 
-        public DummyItem(String id, String content, String details) {
+
+        public DummyItem(String id, String content, String details, String ImageUrl) {
             this.id = id;
             this.content = content;
             this.details = details;
+            this.imageUrl = ImageUrl;
         }
 
         @Override
         public String toString() {
             return content;
         }
+    }
+
+    @BindingAdapter("imageFromUrl")
+    public static void imageFromUrl(ImageView view, String imageUrl) {
+        if (imageUrl !=  null && !imageUrl.isEmpty())
+            Glide.with(view.getContext()).load(imageUrl).into(view);
     }
 }
