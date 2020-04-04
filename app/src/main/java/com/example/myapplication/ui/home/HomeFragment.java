@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -40,6 +42,8 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+
+        //int x = 1000147;
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         // 1. get a reference to recyclerView
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.list_of_stuff);
@@ -47,8 +51,14 @@ public class HomeFragment extends Fragment {
         // 2. set layoutManger
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        FragmentManager fm = getFragmentManager();
+
+
+        FrameLayout contentView = (FrameLayout) getActivity().findViewById(R.id.nav_host_fragment);
+        int x = contentView.getId();
+        //int x = ((ViewGroup)(getView().getParent())).getId();
         // 3. create an adapter
-        MyAdapter mAdapter = new MyAdapter(DummyContent.ITEMS);
+        MyAdapter mAdapter = new MyAdapter(DummyContent.ITEMS, x);
         // 4. set adapter
         recyclerView.setAdapter(mAdapter);
 

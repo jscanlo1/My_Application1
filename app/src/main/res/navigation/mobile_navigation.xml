@@ -11,13 +11,6 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
 
-        <action
-            android:id="@+id/action_plant_list_fragment_to_plant_detail_fragment"
-            app:destination="@id/test_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 <!--
     <fragment

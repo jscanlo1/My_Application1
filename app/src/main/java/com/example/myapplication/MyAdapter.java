@@ -1,13 +1,21 @@
 package com.example.myapplication;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.ui.home.ItemDetailFragment;
+import com.example.myapplication.ui.home.TestFragment;
 import com.example.myapplication.ui.home.dummy.DummyContent;
 
 import java.util.List;
@@ -15,9 +23,12 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<DummyContent.DummyItem> itemsData;
+    private int container;
+    //private final mainHomePage mParentActivity;
 
-    public MyAdapter(List<DummyContent.DummyItem> mValues) {
+    public MyAdapter(List<DummyContent.DummyItem> mValues, int x) {
         this.itemsData = mValues;
+        this.container = x;
     }
 
     private LayoutInflater layoutInflater;
@@ -32,36 +43,41 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list_content, parent, false);
         return new ViewHolder(view);
-        /*
-        if (layoutInflater == null) {
-            layoutInflater = LayoutInflater.from(parent.getContext());
-        }
-        ItemListContentBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.item_list_content, parent, false);
-        return new ViewHolder(binding);*/
+
 
     }
 
+    private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
+
+            /*
+            Bundle arguments = new Bundle();
+            arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.id);
+            ItemDetailFragment fragment = new ItemDetailFragment();
+            fragment.setArguments(arguments);
+            mParentActivity.getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.item_detail_container, fragment)
+                    .commit();
+
+             */
 
 
-    /*
-    private View.OnClickListener createOnClickListener(final String plantId) {
-        return v -> Navigation.findNavController(v).navigate(
-                HomeFragmentDirections.actionPlantListFragmentToPlantDetailFragment(plantId));
+            Bundle arguments = new Bundle();
+            arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.id);
 
-    }*/
+            ItemDetailFragment fragment = new ItemDetailFragment();
+            fragment.setArguments(arguments);
 
-    /*
-    private View.OnClickListener createOnClickListener(final String plantId) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HomeFragmentDirections.ActionPlantListFragmentToPlantDetailFragment direction =
-                        HomeFragmentDirections.actionPlantListFragmentToPlantDetailFragment(plantId);
-                Navigation.findNavController(view).navigate(direction);
+            AppCompatActivity activity = (AppCompatActivity) view.getContext();
+            //TestFragment fragment = new TestFragment();
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
 
-            }
-        };
-    }*/
+            //R.id.nav_host_fragment
+        }
+    };
+
 
 
 
@@ -69,23 +85,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
 
-        // - get data from your itemsData at this position
-        // - replace the contents of the view with that itemsData
-
-        /*
-        DummyContent.DummyItem clickedItem = itemsData.get(position);
-
-        viewHolder.bind(clickedItem, createOnClickListener(clickedItem.id));
-        viewHolder.itemView.setTag(itemsData.get(position));
-        */
-
-
         viewHolder.mIdView.setText(itemsData.get(position).id);
         viewHolder.mContentView.setText(itemsData.get(position).content);
 
         viewHolder.itemView.setTag(itemsData.get(position));
-        //viewHolder.bind(createOnClickListener(plant.getPlantId()), plant);
-
+        viewHolder.itemView.setOnClickListener(mOnClickListener);
 
 
     }
@@ -94,27 +98,12 @@ static class ViewHolder extends RecyclerView.ViewHolder {
     final TextView mIdView;
     final TextView mContentView;
 
-    //List binding;
-    //ItemListContentBinding binding;
 
 
     ViewHolder(View view) {
         super(view);
         mIdView = view.findViewById(R.id.id_text);
         mContentView = view.findViewById(R.id.content);
-
-        /*
-        ViewHolder(@NonNull ItemListContentBinding binding) {
-        super(binding.getRoot());
-        this.binding = binding;
-    }
-
-    void bind(DummyContent.DummyItem plant, View.OnClickListener clickListener) {
-        binding.setClickListener(clickListener);
-        binding.setPlant(plant);
-
-        binding.executePendingBindings();
-        */
 
 
     }
