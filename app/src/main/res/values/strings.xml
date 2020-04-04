@@ -17,4 +17,7 @@
     <string name="permission_required_toast">permission required toast</string>
     <string name="permission_rationale_location">permission rationale location</string>
     <string name="location_permission_denied">location permission denied</string>
+    <string name="item_details_title" translation_description="Title for the plant details screen where the user can see the details for a specific plant.">Item details</string>
+    <string name="action_settings">Settings</string>
+    <string name="share_text_plant" translation_description="The default messaged used when sharing a plant on SNS, etc.">Check out the %s plant in the Android Sunflower app</string>
 </resources>
