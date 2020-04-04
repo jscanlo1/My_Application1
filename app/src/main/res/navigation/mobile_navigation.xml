@@ -28,11 +28,7 @@
         android:label="@string/title_map"
         tools:layout="@layout/fragment_map" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.myapplication.ui.notifications.NotificationsFragment"
-        android:label="@string/title_timetable"
-        tools:layout="@layout/fragment_notifications" />
+
     <fragment
         android:id="@+id/navigation_account"
         android:name="com.example.myapplication.ui.account.AccountFragment"
