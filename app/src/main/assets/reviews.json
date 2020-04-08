@@ -1,0 +1,236 @@
+[
+    {
+        "ID": 1,
+        "articleID": 1,
+        "title": "Great Module",
+        "description": "I really enjoyed this module, the demonstrators were very helpful.",
+        "postedBy": "Dylan Storey",
+        "category": "Feedback",
+        "restaurantID": null
+    },
+    {
+        "ID": 2,
+        "articleID": 2,
+        "title": "Very frustrating assignments",
+        "description": "I found the assignments for this module to be very tedious, and took too much time",
+        "postedBy": "Dylan Storey",
+        "category": "Feedback",
+        "restaurantID": null
+    },
+    {
+        "ID": 3,
+        "articleID": 3,
+        "title": "Looking for student accomodation",
+        "description": "Hi, I'm looking for  student accomodation at a reasonable price in Dublin, any advice?",
+        "postedBy": "John Smith",
+        "category": "Social",
+        "restaurantID": null
+    },
+    {
+        "ID": 4,
+        "articleID": 3,
+        "title": "Looking for student accomodation",
+        "description": "I heard you can find some accomodation on daft.ie, maybe try there?",
+        "postedBy": "Jane Smith",
+        "category": "Social",
+        "restaurantID": null
+    },
+    {
+        "ID": 5,
+        "articleID": 3,
+        "title": "Looking for student accomodation",
+        "description": "I will check that out, thanks very much.",
+        "postedBy": "John Smith",
+        "category": "Social",
+        "restaurantID": null
+    },
+    {
+        "ID": 6,
+        "articleID": 4,
+        "title": "Challenging course material",
+        "description": "The base learning material for this subject is very difficult and can be overwhelming",
+        "postedBy": "Jane Doe",
+        "category": "Feedback",
+        "restaurantID": null
+    },
+    {
+        "ID": 7,
+        "articleID": 5,
+        "title": "One of the hardest modules of the year",
+        "description": "This module is insanely difficult, honestly don't know how I got past it",
+        "postedBy": "Dylan Storey",
+        "category": "Feedback",
+        "restaurantID": null
+    },
+    {
+        "ID": 1002,
+        "articleID": 6,
+        "title": "Selling old textbooks",
+        "description": "Hi, I'm selling old textbooks DM me if youre interested",
+        "postedBy": "Jane Doe",
+        "category": "Advertisements",
+        "restaurantID": null
+    },
+    {
+        "ID": 1003,
+        "articleID": 7,
+        "title": "Really Good",
+        "description": "I really liked this",
+        "postedBy": "John Doe",
+        "category": "Review",
+        "restaurantID": 21
+    },
+    {
+        "ID": 1004,
+        "articleID": 8,
+        "title": "Great coffee",
+        "description": "Coffee was really good",
+        "postedBy": "user",
+        "category": "Review",
+        "restaurantID": 1002
+    },
+    {
+        "ID": 1006,
+        "articleID": 9,
+        "title": "Really good value",
+        "description": "The subway saver meal is great value, can't go wrong with it",
+        "postedBy": "John Smith",
+        "category": "Review",
+        "restaurantID": 1
+    },
+    {
+        "ID": 1007,
+        "articleID": 10,
+        "title": "Pretty good",
+        "description": "This place is alright, handy to have if you are in a rush",
+        "postedBy": "John Doe",
+        "category": "Review",
+        "restaurantID": 3
+    },
+    {
+        "ID": 1008,
+        "articleID": 11,
+        "title": "Unreal",
+        "description": "One of the best burritos I've had, make sure you try the nachos",
+        "postedBy": "John Smith",
+        "category": "Review",
+        "restaurantID": 4
+    },
+    {
+        "ID": 1009,
+        "articleID": 12,
+        "title": "Coffee isn't the best",
+        "description": "Not surprisingly, this place is about a 4 out of 10",
+        "postedBy": "Jane Doe",
+        "category": "Review",
+        "restaurantID": 5
+    },
+    {
+        "ID": 1010,
+        "articleID": 13,
+        "title": "A bit expensive",
+        "description": "It's okay, not really worth the money in my opinion",
+        "postedBy": "John Doe",
+        "category": "Review",
+        "restaurantID": 8
+    },
+    {
+        "ID": 1011,
+        "articleID": 14,
+        "title": "Really good food",
+        "description": "This place is great. Good noodles",
+        "postedBy": "John Doe",
+        "category": "Review",
+        "restaurantID": 9
+    },
+    {
+        "ID": 1012,
+        "articleID": 15,
+        "title": "Great value",
+        "description": "You won't believe how cheap this place is",
+        "postedBy": "Jane Doe",
+        "category": "Review",
+        "restaurantID": 10
+    },
+    {
+        "ID": 1013,
+        "articleID": 16,
+        "title": "Pretty expensive",
+        "description": "The food is okay but I don't think it is worth it",
+        "postedBy": "Jane Smith",
+        "category": "Review",
+        "restaurantID": 11
+    },
+    {
+        "ID": 1014,
+        "articleID": 17,
+        "title": "Can't go wrong with pratski",
+        "description": "Buying cans in a pub is always a win",
+        "postedBy": "Jane Doe",
+        "category": "Review",
+        "restaurantID": 13
+    },
+    {
+        "ID": 1015,
+        "articleID": 18,
+        "title": "Really good value",
+        "description": "Surprisingly good food considering the low price",
+        "postedBy": "Jane Smith",
+        "category": "Review",
+        "restaurantID": 16
+    },
+    {
+        "ID": 1016,
+        "articleID": 19,
+        "title": "Average",
+        "description": "Really nothing special going on here",
+        "postedBy": "Jane Doe",
+        "category": "Review",
+        "restaurantID": 18
+    },
+    {
+        "ID": 1017,
+        "articleID": 20,
+        "title": "Great coffee",
+        "description": "One of the best coffees in Dublin",
+        "postedBy": "John Smith",
+        "category": "Review",
+        "restaurantID": 19
+    },
+    {
+        "ID": 1018,
+        "articleID": 21,
+        "title": "Greasy",
+        "description": "Don't expect anything healthy here",
+        "postedBy": "John Doe",
+        "category": "Review",
+        "restaurantID": 20
+    },
+    {
+        "ID": 1019,
+        "articleID": 22,
+        "title": "Some of the best asian fast food in Dublin",
+        "description": "This place is unreal, would definitely recommend",
+        "postedBy": "John Smith",
+        "category": "Review",
+        "restaurantID": 21
+    },
+    {
+        "ID": 1020,
+        "articleID": 23,
+        "title": "The GOAT",
+        "description": "Hands down the best burrito",
+        "postedBy": "Jane Doe",
+        "category": "Review",
+        "restaurantID": 22
+    },
+    {
+        "ID": 1021,
+        "articleID": 24,
+        "title": "Too healthy",
+        "description": "Don't come here if you want to leave with a full stomach",
+        "postedBy": "Jane Doe",
+        "category": "Review",
+        "restaurantID": 24
+    }
+]
