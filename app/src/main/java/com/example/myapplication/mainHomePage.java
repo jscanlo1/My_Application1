@@ -28,10 +28,6 @@ public class mainHomePage extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
-
 
 
 
