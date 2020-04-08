@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.home.dummy.DummyContent;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -94,6 +95,7 @@ public class ItemDetailFragment extends Fragment
         ImageView imageView = (ImageView) rootView.findViewById(R.id.detail_image);
         Glide.with(this)
                 .load(mItem.imageUrl)
+                .apply(RequestOptions.circleCropTransform())
                 .into(imageView);
 
         // Gets the MapView from the XML layout and creates it
@@ -102,6 +104,8 @@ public class ItemDetailFragment extends Fragment
 
 
         mapView.getMapAsync(this);
+
+
 
         return rootView;
     }
@@ -207,6 +211,8 @@ public class ItemDetailFragment extends Fragment
             mPermissionDenied = false;
         }
     }
+
+
 
     /**
      * Displays a dialog with error message explaining that the location permission is missing.
