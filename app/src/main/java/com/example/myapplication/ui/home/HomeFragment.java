@@ -70,6 +70,7 @@ public class HomeFragment extends Fragment {
 
         setHasOptionsMenu(true);
         return rootView;
+
     }
 
 
