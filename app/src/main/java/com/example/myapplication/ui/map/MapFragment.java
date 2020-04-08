@@ -4,32 +4,35 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.myapplication.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 
 public class MapFragment extends Fragment
     implements GoogleMap.OnMyLocationButtonClickListener,
@@ -95,6 +98,7 @@ public class MapFragment extends Fragment
     }
 
 
+
     @Override
     public void onMapReady(final GoogleMap googleMap) {
         this.googleMap = googleMap;
@@ -102,6 +106,11 @@ public class MapFragment extends Fragment
         googleMap.setOnMyLocationButtonClickListener(this);
         googleMap.setOnMyLocationClickListener(this);
         enableMyLocation();
+        float zoomLevel = 16.0f; //This goes up to 21
+        LatLng startzoom  = new LatLng(53.341960, -6.253881);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startzoom, zoomLevel));
+        get_json();
+
 
         LatLng mamasRevenge = new LatLng(53.341960, -6.253881);
         LatLng centra = new LatLng(53.342748, -6.250015);
@@ -116,6 +125,39 @@ public class MapFragment extends Fragment
                         "Student deal: $5.50-6"));
 
     }
+
+    public void get_json(){
+        String json;
+        try{
+            InputStream is = getContext().getAssets().open("restaurants.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+            JSONArray jsonArray = new JSONArray(json);
+
+            for(int i = 0; i< jsonArray.length(); i++){
+                JSONObject obj = jsonArray.getJSONObject(i);
+                googleMap.addMarker(new MarkerOptions()
+                        .title(obj.getString("restaurantName"))
+                        .snippet(obj.getString("mealDeal"))
+                        .position(new LatLng(
+                                obj.getDouble("longitude"),
+                                obj.getDouble("latitude")
+                        ))
+                );
+            }
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+    }
+
+
 
 
     private void enableMyLocation() {
