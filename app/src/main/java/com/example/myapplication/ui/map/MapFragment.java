@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,7 +22,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
@@ -32,14 +33,13 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 public class MapFragment extends Fragment
     implements GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnMyLocationClickListener,
         OnMapReadyCallback,
         ActivityCompat.OnRequestPermissionsResultCallback{
-
+    //private MyAdapter mAdapter;
     private GoogleMap googleMap;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class MapFragment extends Fragment
         mapFragment.getMapAsync(this);
 
         setHasOptionsMenu(true);
-
+        //mAdapter = new MyAdapter(getActivity(), DummyContent.ITEMS, x);
         return rootView;
     }
     @Override
@@ -60,34 +60,42 @@ public class MapFragment extends Fragment
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        boolean restaurants;
+        boolean cafes;
+        boolean events;
         switch (item.getItemId()) {
             case R.id.menuRestaurants:
                 // User chose the "Settings" item, show the app settings UI...
-                //filter("restaurants");
+                //mAdapter.getFilter().filter("restaurant");
+                googleMap.clear();
+                get_jsonRestaurants(true, false, false);
                 return true;
 
             case R.id.menuCafes:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
-
+               //restaurantMarkers.setVisible(false);
+                googleMap.clear();
+                get_jsonRestaurants(false, true, false);
                 return true;
 
             case R.id.menuEvents:
                 // User chose the "Favorite" action, mark the current item
-                // as a favorite...
-
+                googleMap.clear();
+                get_jsonRestaurants(false, false, true);
+                //mAdapter.getFilter().filter("event");
                 return true;
             case R.id.menuAll:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
-
+                googleMap.clear();
+                get_jsonRestaurants(true, true, true);
                 return true;
 
             default:
-
+                //mAdapter.getFilter().filter("all");
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
+            //return true;
             //return true;
         }
         //
@@ -109,24 +117,15 @@ public class MapFragment extends Fragment
         float zoomLevel = 16.0f; //This goes up to 21
         LatLng startzoom  = new LatLng(53.341960, -6.253881);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startzoom, zoomLevel));
-        get_json();
 
 
-        LatLng mamasRevenge = new LatLng(53.341960, -6.253881);
-        LatLng centra = new LatLng(53.342748, -6.250015);
 
-        googleMap.addMarker(new MarkerOptions().position(centra)
-                .title("Marker in Centra")
-                .snippet("Cheap chicken fillet rolls. " +
-                        "Student Deal: $3.15"));
-        googleMap.addMarker(new MarkerOptions().position(mamasRevenge)
-                .title("Marker in Mama's Revenge")
-                .snippet("Cheap, authentic buritto place. " +
-                        "Student deal: $5.50-6"));
 
     }
 
-    public void get_json(){
+
+
+    public void get_jsonRestaurants(boolean restaurants, boolean cafes, boolean events){
         String json;
         try{
             InputStream is = getContext().getAssets().open("restaurants.json");
@@ -140,15 +139,45 @@ public class MapFragment extends Fragment
 
             for(int i = 0; i< jsonArray.length(); i++){
                 JSONObject obj = jsonArray.getJSONObject(i);
-                googleMap.addMarker(new MarkerOptions()
-                        .title(obj.getString("restaurantName"))
-                        .snippet(obj.getString("mealDeal"))
-                        .position(new LatLng(
-                                obj.getDouble("longitude"),
-                                obj.getDouble("latitude")
-                        ))
-                );
+                if((obj.getString("category").equals("Restaurant") && restaurants)) {
+                    Marker restaurantMarkers = googleMap.addMarker(new MarkerOptions()
+                            .title(obj.getString("restaurantName"))
+                            .snippet(obj.getString("mealDeal"))
+                            .position(new LatLng(
+                                    obj.getDouble("longitude"),
+                                    obj.getDouble("latitude")
+                            ))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                    );
+                   //restaurantMarkers.setVisible(true);
+                }
+                else if(obj.getString("category").equals("Cafe") && cafes) {
+                    Marker cafeMarkers = googleMap.addMarker(new MarkerOptions()
+                            .title(obj.getString("restaurantName"))
+                            .snippet(obj.getString("mealDeal"))
+                            .position(new LatLng(
+                                    obj.getDouble("longitude"),
+                                    obj.getDouble("latitude")
+                            ))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                    );
+                    // cafeMarkers.setVisible(true);
+                }
+                else if(obj.getString("category").equals("Event") && events) {
+                    Marker eventMarkers = googleMap.addMarker(new MarkerOptions()
+                            .title(obj.getString("restaurantName"))
+                            .snippet(obj.getString("mealDeal"))
+                            .position(new LatLng(
+                                    obj.getDouble("longitude"),
+                                    obj.getDouble("latitude")
+                            ))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                    );
+                    // cafeMarkers.setVisible(true);
+                }
+
             }
+
 
         } catch (IOException e){
             e.printStackTrace();

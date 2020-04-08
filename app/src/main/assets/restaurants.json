@@ -363,15 +363,15 @@
         "mealDeal": "coffee and donut €4.5"
     },
     {
-        "ID": 1012,
-        "restaurantName": "Starbucks",
-        "location": "Dawson Street",
-        "category": "Cafe",
-        "totalStars": 504.0,
-        "numReviews": 204,
-        "longitude": 53.342072,
-        "latitude": -6.258281,
-        "mealDeal": null
+    "ID": 1012,
+    "restaurantName": "Starbucks",
+    "location": "Dawson Street",
+    "category": "Cafe",
+    "totalStars": 504.0,
+    "numReviews": 204,
+    "longitude": 53.342072,
+    "latitude": -6.258281,
+    "mealDeal": null
     },
     {
         "ID": 1013,
@@ -405,5 +405,60 @@
         "longitude": 53.34446,
         "latitude": -6.261356,
         "mealDeal": null
+    },
+    {
+        "ID": 1016,
+        "restaurantName": "The Gingerman",
+        "location": "Dawson Street",
+        "category": "Event",
+        "totalStars": 504.0,
+        "numReviews": 204,
+        "longitude": 53.341906,
+        "latitude": -6.249554,
+        "mealDeal": "Student Tuesdays: €5 Guinness!!"
+    },
+    {
+        "ID": 1017,
+        "restaurantName": "Café en Seine",
+        "location": "Kildare Street",
+        "category": "Event",
+        "totalStars": 304.0,
+        "numReviews": 100,
+        "longitude": 53.340684,
+        "latitude": -6.258588,
+        "mealDeal": "Wicked Wednesdays"
+    },
+    {
+        "ID": 1018,
+        "restaurantName": "Doyle's",
+        "location": "Trinity College Dublin",
+        "category": "Event",
+        "totalStars": 395.0,
+        "numReviews": 103,
+        "longitude": 53.345800,
+        "latitude": -6.257567,
+        "mealDeal": "Doyle's mondays"
+    },
+    {
+        "ID": 1019,
+        "restaurantName": "Xico",
+        "location": "College Green",
+        "category": "Event",
+        "totalStars": 395.0,
+        "numReviews": 182,
+        "longitude": 53.337874,
+        "latitude": -6.252647,
+        "mealDeal": "Mexicano Wednesdays: €5 Frozen Margaritas"
+    },
+    {
+        "ID": 1020,
+        "restaurantName": "O'Reilly's",
+        "location": "College Green",
+        "category": "Event",
+        "totalStars": 395.0,
+        "numReviews": 182,
+        "longitude": 53.347021,
+        "latitude": -6.254218,
+        "mealDeal": "Cheap Ass Mondays: €1/2/3 shots"
     }
 ]
