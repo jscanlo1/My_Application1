@@ -6,6 +6,9 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -38,16 +41,60 @@ public class MapFragment extends Fragment
         ActivityCompat.OnRequestPermissionsResultCallback{
 
     private GoogleMap googleMap;
-    private View rootView;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_map, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_map, container, false);
         // Try to obtain the map from the SupportMapFragment.
         SupportMapFragment mapFragment = SupportMapFragment.newInstance();
         getChildFragmentManager().beginTransaction().replace(R.id.map, mapFragment).commit();
         mapFragment.getMapAsync(this);
 
+        setHasOptionsMenu(true);
+
         return rootView;
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.home_list, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menuRestaurants:
+                // User chose the "Settings" item, show the app settings UI...
+                //filter("restaurants");
+                return true;
+
+            case R.id.menuCafes:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+
+                return true;
+
+            case R.id.menuEvents:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+
+                return true;
+            case R.id.menuAll:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+
+                return true;
+
+            default:
+
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+            //return true;
+        }
+        //
+    }
+
+    public void filter(String entry){
+
     }
 
 
@@ -182,6 +229,7 @@ public class MapFragment extends Fragment
     @Override
     public void onResume() {
         super.onResume();
+
         if (mPermissionDenied) {
             // Permission was not granted, display error dialog.
             showMissingPermissionError();
