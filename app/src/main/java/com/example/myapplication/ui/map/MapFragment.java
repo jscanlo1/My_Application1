@@ -111,6 +111,7 @@ public class MapFragment extends Fragment
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startzoom, zoomLevel));
         //get_json();
 
+        insertAllMarkers(googleMap);
 
         LatLng mamasRevenge = new LatLng(53.341960, -6.253881);
         LatLng centra = new LatLng(53.342748, -6.250015);
@@ -126,39 +127,12 @@ public class MapFragment extends Fragment
 
     }
 
-    /*
-    public void get_json(){
-        String json;
-        try{
-            InputStream is = getContext().getAssets().open("restaurants.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
+    public void insertAllMarkers(GoogleMap googleMap){
 
-            json = new String(buffer, "UTF-8");
-            JSONArray jsonArray = new JSONArray(json);
 
-            for(int i = 0; i< jsonArray.length(); i++){
-                JSONObject obj = jsonArray.getJSONObject(i);
-                googleMap.addMarker(new MarkerOptions()
-                        .title(obj.getString("restaurantName"))
-                        .snippet(obj.getString("mealDeal"))
-                        .position(new LatLng(
-                                obj.getDouble("longitude"),
-                                obj.getDouble("latitude")
-                        ))
-                );
-            }
-
-        } catch (IOException e){
-            e.printStackTrace();
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
     }
 
-     */
+
 
 
 

@@ -4,6 +4,8 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -121,6 +123,8 @@ public class DummyContent {
         public final String latitude;
         public final String details;
         public final String imageUrl;
+        public LatLng location;
+
 
 
 
@@ -134,6 +138,16 @@ public class DummyContent {
             this.latitude = latitude;
             this.details = details;
             this.imageUrl = imageUrl;
+            //this.location  = new LatLng(Integer.parseInt(longitude), Integer.parseInt(latitude));
+
+            try {
+                this.location  = new LatLng(Double.parseDouble(longitude), Double.parseDouble(latitude));
+            } catch(NumberFormatException nfe) {
+                this.location = new LatLng(0,0);
+
+            }
+
+
 
         }
 

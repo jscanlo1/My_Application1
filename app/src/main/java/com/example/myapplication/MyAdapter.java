@@ -86,8 +86,8 @@ implements Filterable {
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
 
         final DummyContent.DummyItem item = itemListFiltered.get(position);
-        viewHolder.mIdView.setText(item.id);
-        viewHolder.mContentView.setText(item.details);
+        viewHolder.mIdView.setText(item.name);
+        viewHolder.mContentView.setText(item.description);
 
         viewHolder.itemView.setTag(item);
         viewHolder.itemView.setOnClickListener(mOnClickListener);
