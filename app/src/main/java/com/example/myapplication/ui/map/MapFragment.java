@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,7 +23,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
@@ -33,8 +34,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class MapFragment extends Fragment
     implements GoogleMap.OnMyLocationButtonClickListener,
@@ -57,7 +60,6 @@ public class MapFragment extends Fragment
 
         setHasOptionsMenu(true);
 
-
         return rootView;
     }
     @Override
@@ -67,10 +69,13 @@ public class MapFragment extends Fragment
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        boolean restaurants;
+        boolean cafes;
+        boolean events;
         switch (item.getItemId()) {
             case R.id.menuRestaurants:
                 // User chose the "Settings" item, show the app settings UI...
-                //filter("restaurants");
+
                 googleMap.clear();
                 insertMarkers(googleMap, "restaurant");
                 return true;
@@ -81,10 +86,12 @@ public class MapFragment extends Fragment
                 googleMap.clear();
                 insertMarkers(googleMap, "cafe");
 
+
                 return true;
 
             case R.id.menuEvents:
                 // User chose the "Favorite" action, mark the current item
+
                 // as a favorite...
                 googleMap.clear();
                 insertMarkers(googleMap, "event");
@@ -94,17 +101,19 @@ public class MapFragment extends Fragment
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
                 googleMap.clear();
+
                 insertMarkers(googleMap, "all");
 
                 return true;
 
             default:
-
+                //mAdapter.getFilter().filter("all");
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 googleMap.clear();
                 insertMarkers(googleMap, "all");
                 return super.onOptionsItemSelected(item);
+            //return true;
             //return true;
         }
         //
@@ -126,13 +135,14 @@ public class MapFragment extends Fragment
         float zoomLevel = 16.0f; //This goes up to 21
         LatLng startzoom  = new LatLng(53.341960, -6.253881);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startzoom, zoomLevel));
-        //get_json();
+
 
         insertMarkers(googleMap, "all");
 
 
 
     }
+
 
     private void insertMarkers(GoogleMap googleMap, String type){
         int length = DummyContent.ITEMS.size();
@@ -151,6 +161,7 @@ public class MapFragment extends Fragment
                             .snippet(place.description));
                 }
             }
+
 
 
 
