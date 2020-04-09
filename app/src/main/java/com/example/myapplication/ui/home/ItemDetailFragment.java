@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,9 +31,14 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.like.LikeButton;
+import com.like.OnLikeListener;
 
 import java.util.Objects;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 /**
  * A fragment representing a single Item detail screen.
@@ -42,7 +48,7 @@ import java.util.Objects;
  */
 public class ItemDetailFragment extends Fragment
         implements OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener,
-        GoogleMap.OnMyLocationClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
+        GoogleMap.OnMyLocationClickListener, ActivityCompat.OnRequestPermissionsResultCallback{
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -80,6 +86,8 @@ public class ItemDetailFragment extends Fragment
                 appBarLayout.setTitle(mItem.content);
             }*/
         }
+
+
     }
 
     @Override
@@ -104,7 +112,29 @@ public class ItemDetailFragment extends Fragment
         mapView.onCreate(savedInstanceState);
 
 
+
         mapView.getMapAsync(this);
+        LikeButton heartButton = rootView.findViewById(R.id.heart_button);
+
+        if(mItem.favourite){
+            heartButton.setLiked(true);
+
+        }else{
+            heartButton.setLiked(false);
+        }
+        heartButton.setOnLikeListener(new OnLikeListener() {
+            @Override
+            public void liked(LikeButton likeButton) {
+                mItem.favourite = true;
+
+            }
+
+            @Override
+            public void unLiked(LikeButton likeButton) {
+                mItem.favourite = false;
+
+            }
+        });
 
 
 
@@ -117,7 +147,7 @@ public class ItemDetailFragment extends Fragment
 
 
         googleMap.setOnMyLocationButtonClickListener(this);
-        googleMap.setOnMyLocationClickListener((GoogleMap.OnMyLocationClickListener) this);
+        googleMap.setOnMyLocationClickListener(this);
         enableMyLocation();
         googleMap.addMarker(new MarkerOptions().position(mItem.location)
                 .title(mItem.name)
@@ -128,9 +158,11 @@ public class ItemDetailFragment extends Fragment
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mItem.location, zoomLevel));
 
 
+
         //map.moveCamera(CameraUpdateFactory.newLatLng(mItem.location));
 
     }
+
 
     private void enableMyLocation() {
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
@@ -151,7 +183,7 @@ public class ItemDetailFragment extends Fragment
 
     @Override
     public boolean onMyLocationButtonClick() {
-        Toast.makeText(getContext(), "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "MyLocation button clicked", LENGTH_SHORT).show();
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false;
