@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/textView5"
+
         android:layout_width="417dp"
         android:layout_height="98dp"
         android:background="#4D000000"
@@ -21,6 +22,7 @@
         android:textStyle="normal"
         app:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,6 +33,7 @@
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:autofillHints=""
+
         android:background="#99FFFFFF"
         android:ems="10"
         android:hint="@string/enter_e_mail"
@@ -59,6 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.654" />
+
 
     <Button
         android:id="@+id/buttonLogin"
