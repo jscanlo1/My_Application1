@@ -1,46 +1,52 @@
 package com.example.myapplication.ui.home;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.MyAdapter;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.home.dummy.DummyContent;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class HomeFragment extends Fragment {
+    private MyAdapter mAdapter;
 
     //private List<DummyContent> plantsList = new ArrayList<>();
     //private HomeViewModel homeViewModel;
+    /*
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        FragmentManager fx = getActivity().getSupportFragmentManager();
+        for(int i = 0; i < fx.getBackStackEntryCount(); ++i) {
+            fx.popBackStack();
+
+
+    }*/
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
+
+
+        FragmentManager fx = getActivity().getSupportFragmentManager();
+        for(int i = 0; i < fx.getBackStackEntryCount(); ++i) {
+            fx.popBackStack();
+        }
 
 
         //int x = 1000147;
@@ -58,10 +64,54 @@ public class HomeFragment extends Fragment {
         int x = contentView.getId();
         //int x = ((ViewGroup)(getView().getParent())).getId();
         // 3. create an adapter
-        MyAdapter mAdapter = new MyAdapter(DummyContent.ITEMS, x);
+        mAdapter = new MyAdapter(getActivity(), DummyContent.ITEMS, x);
         // 4. set adapter
         recyclerView.setAdapter(mAdapter);
 
+        setHasOptionsMenu(true);
         return rootView;
+
+    }
+
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.home_list, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menuRestaurants:
+                // User chose the "Settings" item, show the app settings UI...
+                mAdapter.getFilter().filter("restaurant");
+                return true;
+
+            case R.id.menuCafes:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                mAdapter.getFilter().filter("cafe");
+                return true;
+
+            case R.id.menuEvents:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                mAdapter.getFilter().filter("event");
+                return true;
+            case R.id.menuAll:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                mAdapter.getFilter().filter("all ");
+                return true;
+
+            default:
+                mAdapter.getFilter().filter("all");
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+                //return true;
+        }
+        //
     }
 }

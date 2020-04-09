@@ -4,75 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dublin_background"
+
+    android:background="@drawable/bg31"
+
     tools:context=".SignUpPage">
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="180dp"
-        android:layout_height="122dp"
-        android:layout_marginTop="100dp"
+
+
+        android:layout_width="423dp"
+        android:layout_height="98dp"
+        android:background="#40000000"
         android:fadingEdge="horizontal"
         android:gravity="center"
         android:padding="5dp"
-        android:text="Let's start by making an account"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:text="Sign Up Page"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:textStyle="normal"
+        app:fontFamily="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/NewPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:layout_width="214dp"
+        android:layout_height="39dp"
         android:layout_marginTop="20dp"
-        android:background="#F4EEEE"
+        android:background="#65FFFFFF"
+
         android:ems="10"
         android:hint="@string/enter_password"
         android:importantForAutofill="no"
         android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold
+"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.507"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailID" />
+        app:layout_constraintTop_toBottomOf="@+id/emailID"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/NewPasswordTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:layout_width="215dp"
+        android:layout_height="39dp"
         android:layout_marginTop="20dp"
-        android:background="#EFEAEA"
+        android:background="#72FFFFFF"
+
         android:ems="10"
         android:hint="@string/rewrite_password"
         android:inputType="textPassword"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.51"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NewPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/NewPassword"
+        app:layout_constraintVertical_bias="0.004" />
 
     <EditText
         android:id="@+id/emailID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:background="#F3EEEE"
+
+
+        android:layout_width="215dp"
+        android:layout_height="40dp"
+        android:background="#80FFFFFF"
+
         android:ems="10"
         android:hint="Enter E-mail"
         android:inputType="textEmailAddress"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.529" />
 
     <Button
         android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="145dp"
+        android:layout_height="46dp"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="103dp"
+        android:background="#A81B1919"
         android:text="Submit"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NewPasswordTwo" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.881" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

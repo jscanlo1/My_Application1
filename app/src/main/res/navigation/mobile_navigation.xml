@@ -12,15 +12,7 @@
         tools:layout="@layout/fragment_home">
 
     </fragment>
-<!--
-    <fragment
-        android:id="@+id/item_detail_fragment"
-        android:name="com.example.myapplication.ui.home.ItemDetailsFragment"
-        android:label="@string/item_details_title">
-        <argument
-            android:name="plantId"
-            app:argType="string" />
-    </fragment>-->
+
 
     <fragment
         android:id="@+id/navigation_map"
@@ -39,9 +31,7 @@
         android:id="@+id/test_fragment"
         android:name="com.example.myapplication.ui.home.TestFragment"
         android:label="@string/item_details_title">
-        <argument
-            android:name="plantId"
-            app:argType="string" />
+
 
     </fragment>
 </navigation>
