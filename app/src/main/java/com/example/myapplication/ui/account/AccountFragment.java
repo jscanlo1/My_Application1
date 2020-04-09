@@ -38,6 +38,7 @@ public class AccountFragment extends Fragment {
         });
 
 
+
         final TextView textView1 = root.findViewById(R.id.oh);
         accountViewModel.getText1().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -85,6 +86,10 @@ public class AccountFragment extends Fragment {
             }
         });
 
+
+
         return root;
     }
+
+
 }
