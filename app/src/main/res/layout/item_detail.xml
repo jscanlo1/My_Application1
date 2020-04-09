@@ -83,27 +83,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <TextView
                     android:id="@+id/item_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_normal"
+                    android:layout_marginTop="40dp"
                     android:layout_marginEnd="@dimen/margin_small"
+                    android:layout_marginRight="100dp"
+                    android:gravity="start"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textIsSelectable="true"
+                    android:textSize="36sp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.35"
+                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <com.like.LikeButton
+                    app:icon_type="heart"
+                    app:icon_size="10dp"
+                    android:id="@+id/heart_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:anim_scale_factor="10"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/item_name"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/heart_button" />
 
 
                 <ImageView
                     android:id="@+id/detail_image"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="50dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.48"
                     app:layout_constraintLeft_toLeftOf="parent"

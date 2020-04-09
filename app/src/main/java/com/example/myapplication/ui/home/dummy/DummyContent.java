@@ -125,6 +125,7 @@ public class DummyContent {
         public final String details;
         public final String imageUrl;
         public LatLng location;
+        public boolean favourite;
 
 
 
@@ -139,6 +140,7 @@ public class DummyContent {
             this.latitude = latitude;
             this.details = details;
             this.imageUrl = imageUrl;
+            this.favourite = false;
             //this.location  = new LatLng(Integer.parseInt(longitude), Integer.parseInt(latitude));
 
             try {
