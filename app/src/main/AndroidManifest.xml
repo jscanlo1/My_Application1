@@ -28,16 +28,20 @@
         <activity
             android:name=".mainHomePage"
             android:label="@string/title_activity_main_home_page"></activity>
-        <activity android:name=".LoginScreen" />
-        <activity android:name=".WelcomeScreen">
+        <activity android:name=".LoginScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".WelcomeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpPage" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".SignUpPage"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
