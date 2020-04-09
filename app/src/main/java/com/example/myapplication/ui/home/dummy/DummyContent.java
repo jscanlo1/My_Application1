@@ -42,6 +42,7 @@ public class DummyContent {
 
 
 
+
     public static void create(Context context) {
         String json;
         try {
@@ -70,7 +71,7 @@ public class DummyContent {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //for (int i = 1; i <= COUNT; i++) addItem(createDummyItem(i));
+
     }
 
         // Add some sample items.

@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.home.dummy.DummyContent;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -33,6 +34,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MapFragment extends Fragment
     implements GoogleMap.OnMyLocationButtonClickListener,
@@ -40,16 +42,21 @@ public class MapFragment extends Fragment
         OnMapReadyCallback,
         ActivityCompat.OnRequestPermissionsResultCallback{
 
+
     private GoogleMap googleMap;
+    private List<DummyContent.DummyItem> placeList;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+
+        //placeList = DummyContent.ITEMS;
         // Try to obtain the map from the SupportMapFragment.
         SupportMapFragment mapFragment = SupportMapFragment.newInstance();
         getChildFragmentManager().beginTransaction().replace(R.id.map, mapFragment).commit();
         mapFragment.getMapAsync(this);
 
         setHasOptionsMenu(true);
+
 
         return rootView;
     }
@@ -64,22 +71,30 @@ public class MapFragment extends Fragment
             case R.id.menuRestaurants:
                 // User chose the "Settings" item, show the app settings UI...
                 //filter("restaurants");
+                googleMap.clear();
+                insertMarkers(googleMap, "restaurant");
                 return true;
 
             case R.id.menuCafes:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
+                googleMap.clear();
+                insertMarkers(googleMap, "cafe");
 
                 return true;
 
             case R.id.menuEvents:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
+                googleMap.clear();
+                insertMarkers(googleMap, "event");
 
                 return true;
             case R.id.menuAll:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
+                googleMap.clear();
+                insertMarkers(googleMap, "all");
 
                 return true;
 
@@ -87,6 +102,8 @@ public class MapFragment extends Fragment
 
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
+                googleMap.clear();
+                insertMarkers(googleMap, "all");
                 return super.onOptionsItemSelected(item);
             //return true;
         }
@@ -111,23 +128,33 @@ public class MapFragment extends Fragment
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startzoom, zoomLevel));
         //get_json();
 
-        insertAllMarkers(googleMap);
+        insertMarkers(googleMap, "all");
 
-        LatLng mamasRevenge = new LatLng(53.341960, -6.253881);
-        LatLng centra = new LatLng(53.342748, -6.250015);
 
-        googleMap.addMarker(new MarkerOptions().position(centra)
-                .title("Marker in Centra")
-                .snippet("Cheap chicken fillet rolls. " +
-                        "Student Deal: $3.15"));
-        googleMap.addMarker(new MarkerOptions().position(mamasRevenge)
-                .title("Marker in Mama's Revenge")
-                .snippet("Cheap, authentic buritto place. " +
-                        "Student deal: $5.50-6"));
 
     }
 
-    public void insertAllMarkers(GoogleMap googleMap){
+    private void insertMarkers(GoogleMap googleMap, String type){
+        int length = DummyContent.ITEMS.size();
+        DummyContent.DummyItem place;
+        for(int i = 0; i < length; i++){
+            place = DummyContent.ITEMS.get(i);
+            if(type.equals("all")){
+                googleMap.addMarker(new MarkerOptions().position(place.location)
+                        .title(place.name)
+                        .snippet(place.description));
+
+            } else{
+                if(type.equals(place.type)){
+                    googleMap.addMarker(new MarkerOptions().position(place.location)
+                            .title(place.name)
+                            .snippet(place.description));
+                }
+            }
+
+
+
+        }
 
 
     }
