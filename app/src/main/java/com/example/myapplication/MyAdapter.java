@@ -87,7 +87,7 @@ implements Filterable {
 
         final DummyContent.DummyItem item = itemListFiltered.get(position);
         viewHolder.mIdView.setText(item.id);
-        viewHolder.mContentView.setText(item.content);
+        viewHolder.mContentView.setText(item.details);
 
         viewHolder.itemView.setTag(item);
         viewHolder.itemView.setOnClickListener(mOnClickListener);

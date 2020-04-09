@@ -109,7 +109,7 @@ public class MapFragment extends Fragment
         float zoomLevel = 16.0f; //This goes up to 21
         LatLng startzoom  = new LatLng(53.341960, -6.253881);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startzoom, zoomLevel));
-        get_json();
+        //get_json();
 
 
         LatLng mamasRevenge = new LatLng(53.341960, -6.253881);
@@ -126,6 +126,7 @@ public class MapFragment extends Fragment
 
     }
 
+    /*
     public void get_json(){
         String json;
         try{
@@ -156,6 +157,8 @@ public class MapFragment extends Fragment
             e.printStackTrace();
         }
     }
+
+     */
 
 
 
