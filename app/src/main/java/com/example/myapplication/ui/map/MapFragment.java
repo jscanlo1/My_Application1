@@ -15,11 +15,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.home.ItemDetailFragment;
 import com.example.myapplication.ui.home.dummy.DummyContent;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,6 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class MapFragment extends Fragment
@@ -40,6 +43,7 @@ public class MapFragment extends Fragment
 
 
     private GoogleMap googleMap;
+    private HashMap<Marker, Integer> mHashMap = new HashMap<Marker, Integer>();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
@@ -133,17 +137,40 @@ public class MapFragment extends Fragment
     public void onInfoWindowClick(Marker marker) {
         Toast.makeText(getContext(), "Info window clicked",
                 Toast.LENGTH_SHORT).show();
+
+
+        DummyContent.DummyItem item = DummyContent.ITEMS.get(mHashMap.get(marker));
+
+
+
+
+        Bundle arguments = new Bundle();
+        arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.id);
+
+        ItemDetailFragment fragment = new ItemDetailFragment();
+        fragment.setArguments(arguments);
+
+        AppCompatActivity activity = (AppCompatActivity) getContext();
+        //TestFragment fragment = new TestFragment();
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
+        //activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
+
+        //R.id.nav_host_fragment
     }
 
     private void insertMarkers(GoogleMap googleMap, String type){
         int length = DummyContent.ITEMS.size();
         DummyContent.DummyItem place;
+        Marker marker;
         for(int i = 0; i < length; i++){
             place = DummyContent.ITEMS.get(i);
             if(type.equals("all")){
-                googleMap.addMarker(new MarkerOptions().position(place.location)
+                marker = googleMap.addMarker(new MarkerOptions().position(place.location)
                         .title(place.name)
                         .snippet(place.description));
+                //mHashMap.put(marker, Integer.getInteger(place.id));
+                mHashMap.put(marker, i);
+
 
             } else{
                 if(type.equals(place.type)){

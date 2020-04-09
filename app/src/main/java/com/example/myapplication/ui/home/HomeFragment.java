@@ -102,7 +102,7 @@ public class HomeFragment extends Fragment {
             case R.id.menuAll:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
-                mAdapter.getFilter().filter("all ");
+                mAdapter.getFilter().filter("all");
                 return true;
 
             default:
