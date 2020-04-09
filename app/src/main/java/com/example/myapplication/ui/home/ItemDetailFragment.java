@@ -89,8 +89,8 @@ public class ItemDetailFragment extends Fragment
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.plant_detail)).setText(mItem.details);
-            ((TextView) rootView.findViewById(R.id.plant_watering)).setText(mItem.content);
+            ((TextView) rootView.findViewById(R.id.item_name)).setText(mItem.name);
+            ((TextView) rootView.findViewById(R.id.item_detail)).setText(mItem.details);
         }
 
         ImageView imageView = (ImageView) rootView.findViewById(R.id.detail_image);
@@ -119,19 +119,16 @@ public class ItemDetailFragment extends Fragment
         googleMap.setOnMyLocationButtonClickListener(this);
         googleMap.setOnMyLocationClickListener((GoogleMap.OnMyLocationClickListener) this);
         enableMyLocation();
+        googleMap.addMarker(new MarkerOptions().position(mItem.location)
+                .title(mItem.name)
+                .snippet(mItem.description));
 
-        LatLng mamasRevenge = new LatLng(53.341960, -6.253881);
-        LatLng centra = new LatLng(53.342748, -6.250015);
+        float zoomLevel = 16.0f; //This goes up to 21
 
-        googleMap.addMarker(new MarkerOptions().position(centra)
-                .title("Marker in Centra")
-                .snippet("Cheap chicken fillet rolls. " +
-                        "Student Deal: $3.15"));
-        googleMap.addMarker(new MarkerOptions().position(mamasRevenge)
-                .title("Marker in Mama's Revenge")
-                .snippet("Cheap, authentic buritto place. " +
-                        "Student deal: $5.50-6"));
-        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(43.1, -87.9)));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mItem.location, zoomLevel));
+
+
+        //map.moveCamera(CameraUpdateFactory.newLatLng(mItem.location));
 
     }
 

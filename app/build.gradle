@@ -28,6 +28,10 @@ android {
 }
 
 dependencies {
+    def work_version = "2.3.4"
+
+    // (Java only)
+    implementation "androidx.work:work-runtime:$work_version"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.recyclerview:recyclerview:1.1.0"
@@ -47,5 +51,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.room:room-runtime:2.2.5'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+    implementation 'com.google.code.gson:gson:2.8.6'
 
 }

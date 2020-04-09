@@ -84,7 +84,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/plant_watering"
+                    android:id="@+id/item_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_small"
@@ -108,10 +108,10 @@
                     app:layout_constraintHorizontal_bias="0.48"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/plant_watering" />
+                    app:layout_constraintTop_toBottomOf="@+id/item_name" />
 
                 <TextView
-                    android:id="@+id/plant_detail"
+                    android:id="@+id/item_detail"
                     style="?android:attr/textAppearanceLarge"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

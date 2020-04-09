@@ -5,47 +5,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dublin_background"
+    android:background="@drawable/bg3"
     tools:context=".MainActivity">
-
-
 
 
     <Button
         android:id="@+id/LoginID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="435dp"
-        android:layout_marginBottom="248dp"
+        android:layout_width="147dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="112dp"
+        android:background="#D31B1919"
         android:text="@string/login"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.704" />
 
     <Button
         android:id="@+id/CreateAccountID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="147dp"
+        android:layout_height="46dp"
+        android:background="#C11B1919"
         android:text="@string/create_account"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LoginID"
-        app:layout_constraintVertical_bias="0.487" />
+        app:layout_constraintVertical_bias="0.242" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toTopOf="@+id/LoginID"
+        android:layout_width="452dp"
+        android:layout_height="240dp"
+        android:layout_marginBottom="464dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.243"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
-        app:layout_constraintVertical_bias="0.6" />
+        app:srcCompat="@drawable/logo3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
