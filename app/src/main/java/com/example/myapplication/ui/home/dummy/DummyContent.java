@@ -62,11 +62,11 @@ public class DummyContent {
             is.read(buffer);
             is.close();
 
-            json = new String(buffer, "UTF-8");
+            json = new String(buffer, StandardCharsets.UTF_8);
             JSONArray jsonArray = new JSONArray(json);
             COUNT = jsonArray.length();
 
-            InputStream isF = context.getAssets().open("restaurants.json");
+            InputStream isF = context.getAssets().open("favourite.json");
             int sizeF = isF.available();
             byte[] bufferF = new byte[sizeF];
             isF.read(bufferF);
@@ -78,7 +78,7 @@ public class DummyContent {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject obj = jsonArray.getJSONObject(i);
                 JSONObject UserFavouriteObj = favouriteJsonArray.getJSONObject(i);
-                if(UserFavouriteObj.getInt("ID") == 1){
+                if(UserFavouriteObj.getInt("favourite") == 1){
                     favourite = TRUE;
                 } else{
                     favourite = FALSE;
