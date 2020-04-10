@@ -64,7 +64,7 @@ public class AccountFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_account, container, false);
         TextView textView = root.findViewById(R.id.text_account);
-        textView.setText("Hey NAME");
+        textView.setText("HEY!");
 
 
         TextView textView1 = (TextView) root.findViewById(R.id.favourite_intro);

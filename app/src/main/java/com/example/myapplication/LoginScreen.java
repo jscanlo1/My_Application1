@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -32,9 +31,6 @@ public class LoginScreen extends AppCompatActivity {
     EditText takePassword;
     String message;
 
-    String fakeE = "bob";
-    String fakeP = "123" +
-            "";
 
 
 
@@ -45,6 +41,7 @@ public class LoginScreen extends AppCompatActivity {
 
         takeEmail = (EditText) findViewById(R.id.takeEmail);
         takePassword = (EditText) findViewById(R.id.takePassword);
+
 
 
         Login = (Button) findViewById(R.id.buttonLogin);
@@ -149,6 +146,39 @@ public class LoginScreen extends AppCompatActivity {
 
     return false;
     }
+
+    /*public String get_username(){
+        String json3;
+        try {
+
+            InputStream is = getAssets().open("accounts.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+
+            json3 = new String(buffer, "UTF-8");
+            JSONArray jsonArray = new JSONArray(json3);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject obj = jsonArray.getJSONObject(i);
+                if (obj.getString("passwordHash").equals(userP)) {
+                    String user = obj.getString("username");
+                    return user;
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    return "NULL";
+    }*/
+
+
+
+
 
 }
 
