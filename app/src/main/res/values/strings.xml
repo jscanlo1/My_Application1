@@ -12,6 +12,7 @@
     <string name="title_home">Home</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_map">Map</string>
+    <string name="nameIntro">Hey </string>
     <string name="title_timetable">TimeTable</string>
     <string name="title_account">Account</string>
     <string name="permission_required_toast">permission required toast</string>

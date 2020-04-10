@@ -1,8 +1,10 @@
 package com.example.myapplication.ui.home.dummy;
 
 import android.content.Context;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -12,10 +14,14 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 
 /**
@@ -43,8 +49,11 @@ public class DummyContent {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void create(Context context) {
         String json;
+        String favouriteJson;
+        Boolean favourite;
         try {
 
             InputStream is = context.getAssets().open("restaurants.json");
@@ -57,12 +66,28 @@ public class DummyContent {
             JSONArray jsonArray = new JSONArray(json);
             COUNT = jsonArray.length();
 
+            InputStream isF = context.getAssets().open("restaurants.json");
+            int sizeF = isF.available();
+            byte[] bufferF = new byte[sizeF];
+            isF.read(bufferF);
+            isF.close();
+
+            favouriteJson = new String(bufferF, StandardCharsets.UTF_8);
+            JSONArray favouriteJsonArray = new JSONArray(favouriteJson);
+
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject obj = jsonArray.getJSONObject(i);
+                JSONObject UserFavouriteObj = favouriteJsonArray.getJSONObject(i);
+                if(UserFavouriteObj.getInt("ID") == 1){
+                    favourite = TRUE;
+                } else{
+                    favourite = FALSE;
+                }
+
                 addItem(createDummyItem(obj.getString("ID"),obj.getString("restaurantName"),
                         obj.getString("category"),obj.getString("description"),
                                 obj.getString("longitude"),obj.getString("latitude"),
-                                        obj.getString("details"), obj.getString("imageUrl")));
+                                        obj.getString("details"), obj.getString("imageUrl"), favourite));
 
             }
 
@@ -85,31 +110,13 @@ public class DummyContent {
 
     //private static DummyItem createDummyItem(int position) {
     private static DummyItem createDummyItem(String Id, String name, String type, String description,
-                                             String longitude, String latitude, String details, String imageUrl ) {
+                                             String longitude, String latitude, String details, String imageUrl, Boolean favourite ) {
         //return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position),
         //        "https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg", maketype(position));
 
-        return new DummyItem(Id, name, type, description, longitude, latitude, details, imageUrl);
+        return new DummyItem(Id, name, type, description, longitude, latitude, details, imageUrl, favourite);
 
 
-    }
-
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
-    }
-    private static String maketype(int position) {
-        String string;
-        if(position < 10){
-            string = "cafe";
-        } else{
-            string = "restaurant";
-        }
-        return string;
     }
 
     /**
@@ -120,8 +127,8 @@ public class DummyContent {
         public final String name;
         public final String type;
         public final String description;
-        public final String longitude;
-        public final String latitude;
+        final String longitude;
+        final String latitude;
         public final String details;
         public final String imageUrl;
         public LatLng location;
@@ -130,8 +137,8 @@ public class DummyContent {
 
 
 
-        public DummyItem(String id, String name, String type, String description,
-                         String longitude, String latitude, String details, String imageUrl) {
+        DummyItem(String id, String name, String type, String description,
+                  String longitude, String latitude, String details, String imageUrl, Boolean favourite) {
             this.id = id;
             this.name = name;
             this.type = type;
@@ -140,7 +147,7 @@ public class DummyContent {
             this.latitude = latitude;
             this.details = details;
             this.imageUrl = imageUrl;
-            this.favourite = false;
+            this.favourite = favourite;
             //this.location  = new LatLng(Integer.parseInt(longitude), Integer.parseInt(latitude));
 
             try {

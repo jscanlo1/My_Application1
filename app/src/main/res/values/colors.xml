@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    
+
+
     <color name="colorPrimary">#ffcccc</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#ea3732</color>
     <color name="contact_name">#333333</color>
     <color name="contact_number">#8c8c8c</color>
+
 </resources>
