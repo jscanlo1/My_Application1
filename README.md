@@ -1,7 +1,6 @@
-# CoffeeTrinity
+# GUIDEPOST
 
-Android application to order coffee on the go.
+Android application to check out restaurants and cafes.
 
 Make your own branches and commit changes on that
 
-Use "bob" as email and "123" as password to login
