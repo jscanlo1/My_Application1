@@ -6,8 +6,8 @@
         "description": "fast-food sandwiches",
         "longitude": 53.343602,
         "latitude": -6.247392,
-        "details": "cheap enough fast food. Typically costs about 5-6$",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg"
+        "details": "Subway is an American privately held restaurant franchise that primarily sells submarine sandwiches and salads. It is one of the fastest-growing franchises in the world and, as of October 2019, had 41,512 locations in more than 100 countries. More than half its locations are in the United States.",
+        "imageUrl": "https://b.zmtcdn.com/data/pictures/4/9100504/db9d7c01565e197cfcaf1992c8182cc6.jpg"
     },
     {
         "ID": 2,
@@ -17,17 +17,17 @@
         "longitude": 53.342836,
         "latitude": -6.249836,
         "details": "€3.15 student roll",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg"
+        "imageUrl": "https://fastly.4sqi.net/img/general/width960/92322689_iKouuyKcsLaSmKtFIEUH8E-STF28cFWqaLj2bPsTv-Y.jpg"
     },
     {
         "ID": 3,
         "restaurantName": "Zambrero",
         "category": "restaurant",
-        "description": "Quick and easy mexican",
+        "description": "Mexican food with a conscience",
         "longitude": 53.343539,
         "latitude": -6.247435,
         "details": "Mexican food with a heart, good quality ingredients. Typically about 5$",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg"
+        "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-s/0f/68/f9/66/photo0jpg.jpg"
     },
     {
         "ID": 4,
@@ -37,23 +37,23 @@
         "longitude": 53.343429,
         "latitude": -6.260087,
         "details": "€7.35 burrito and drink",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg"
+        "imageUrl": "https://www.tolteca.ie/images/slider-bg-1.jpg"
     },
     {
         "ID": 5,
         "restaurantName": "The Buttery Cafe",
         "category": "restaurant",
-        "description": "Quick and easy mexican",
+        "description": "Nice affordable cafe",
         "longitude": 53.344953,
         "latitude": -6.2573,
         "details": "10% off with tcard",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg"
+        "imageUrl": "http://trinitynews.ie/wp-content/uploads/2017/10/GQ752032-e1456161479152.jpg"
     },
     {
         "ID": 6,
         "restaurantName": "The Perch Cafe",
         "category": "cafe",
-        "description": "Quick and easy mexican",
+        "description": "Quick coffee on the go",
         "longitude": 53.343396,
         "latitude": -6.257311,
         "details": "10% off with tcard",
@@ -63,17 +63,17 @@
         "ID": 7,
         "restaurantName": "The Forum Cafe",
         "category": "Cafe",
-        "description": "Quick and easy mexican",
+        "description": "Guick coffee on the go",
         "longitude": 53.344688,
         "latitude": -6.253188,
         "details": null,
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg"
+        "imageUrl": "http://trinitynews.ie/wp-content/uploads/2017/10/GQ752032-e1456161479152.jpg"
     },
     {
         "ID": 8,
         "restaurantName": "Costa",
         "category": "Cafe",
-        "description": "Quick and easy mexican",
+        "description": "Nice, affordable coffe with plenty of seating",
         "longitude": 53.342812,
         "latitude": -6.250562,
         "details": null,
@@ -87,7 +87,7 @@
         "longitude": 53.344299,
         "latitude": -6.249383,
         "details": "€7 lunch menu",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg"
+        "imageUrl": "https://www.camile.ie/wordpress/wp-content/uploads/2016/05/table-no-space-middle1.jpg"
     },
     {
         "ID": 10,
@@ -106,8 +106,8 @@
         "description": "Quick and easy mexican",
         "longitude": 53.339563,
         "latitude": -6.258563,
-        "details": "€8.00 student special",
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Apple_orchard_in_Tasmania.jpg"
+        "details": "Top-quality middle-eastern food at an affordable price. You can look to spend between 7-9$ on some of the best falafel in the city. Won't be dissapointed!",
+        "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-s/12/1c/20/3a/brunch-bits.jpg"
     },
     {
         "ID": 12,
