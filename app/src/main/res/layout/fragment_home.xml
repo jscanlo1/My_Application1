@@ -7,7 +7,7 @@
 
     android:fitsSystemWindows="true"
 
-    android:background="@color/colorPrimary">
+    android:background="@color/colourSecondary">
 
 
 

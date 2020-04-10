@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import com.example.myapplication.ui.home.dummy.DummyContent;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
@@ -14,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 
 public class mainHomePage extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
