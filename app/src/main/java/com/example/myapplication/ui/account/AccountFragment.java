@@ -19,10 +19,17 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.LoginScreen;
 import com.example.myapplication.MyAdapter;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.home.dummy.DummyContent;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +40,7 @@ public class AccountFragment extends Fragment {
     private AccountViewModel accountViewModel;
     private MyFavouriteAdapter mAdapter;
     private List<DummyContent.DummyItem> itemsData = new ArrayList<>();
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +60,10 @@ public class AccountFragment extends Fragment {
         }
 
          */
+
+        //String myValue = this.getArguments().getString("message");
+        //return inflater.inflate(R.layout.fragment_account, container, false);
+
         for (DummyContent.DummyItem row : DummyContent.ITEMS) {
 
             // name match condition. this might differ depending on your requirement
@@ -61,10 +73,14 @@ public class AccountFragment extends Fragment {
             }
         }
 
+       // LoginScreen activity = (LoginScreen) getActivity();
+        //String myValue = activity.getMyData();
+
+
 
         View root = inflater.inflate(R.layout.fragment_account, container, false);
         TextView textView = root.findViewById(R.id.text_account);
-        textView.setText("HEY!");
+        textView.setText("Welcome!");
 
 
         TextView textView1 = (TextView) root.findViewById(R.id.favourite_intro);
@@ -88,6 +104,7 @@ public class AccountFragment extends Fragment {
 
         setHasOptionsMenu(true);
         return root;
+       //return inflater.inflate(R.layout.fragment_account, container, false);
     }
 
     @Override

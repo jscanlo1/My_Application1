@@ -10,9 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.myapplication.ui.home.dummy.DummyContent;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.example.myapplication.ui.account.AccountFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
